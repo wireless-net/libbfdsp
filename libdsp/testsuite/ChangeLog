@@ -1,0 +1,39 @@
+2007-08-16  Jie Zhang  <jie.zhang@analog.com>
+
+	* stats.c: Inlude math_bf.h instead of math.h.
+	* math.c: Likewise.
+
+2007-08-03  Jie Zhang  <jie.zhang@analog.com>
+
+	* stats.c: New.
+	* fir/fir_out.std: New.
+	* fir/fir.c: New.
+	* fir/coefs.dat: New.
+	* fir/Makefile: New.
+	* fir/in.dat: New.
+	* cfft/cfft.c: New.
+	* cfft/twiddles.dat: New.
+	* cfft/readme.txt: New.
+	* cfft/Makefile: New.
+	* cfft/in.dat: New.
+	* vector.c: New.
+	* TODO: New.
+	* filter.c: New.
+	* Makerules: New.
+	* math.c: New.
+	* matrix_mul_vec28_4/MatrixMulVec.c: New.
+	* matrix_mul_vec28_4/Verification.c: New.
+	* matrix_mul_vec28_4/MatrixMulVec.h: New.
+	* matrix_mul_vec28_4/Makefile: New.
+	* matrix_mul_vec24_8/MatrixMulVec.c: New.
+	* matrix_mul_vec24_8/Verification.c: New.
+	* matrix_mul_vec24_8/MatrixMulVec.h: New.
+	* matrix_mul_vec24_8/Makefile: New.
+	* float16/addfl16_test.c: New.
+	* float16/addfl16_test.s: New.
+	* float16/subfl16_test.c: New.
+	* float16/mulfl16_test.c: New.
+	* float16/divfl16_test.c: New.
+	* float16/Makefile: New.
+	* Makefile: New.
+

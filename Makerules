@@ -1,0 +1,20 @@
+ifdef subdir
+.. := ../
+endif
+
+define do-install
+$(make-target-directory)
+$(INSTALL_DATA) $< $@
+endef
+
+# Make the target directory if it doesn't exist, using the `mkinstalldirs'
+# script that does `mkdir -p' even if `mkdir' doesn't support that flag.
+define make-target-directory
+$(addprefix $(..)./scripts/mkinstalldirs ,\
+	    $(filter-out $(wildcard $(@D:%/=%)),$(@D:%/=%)))
+endef
+
+inst_includedir=$(DESTDIR)$(USR)/include
+
+inst_libdir=$(DESTDIR)$(SUFFIX)$(USR)/lib$(MULTILIB)
+

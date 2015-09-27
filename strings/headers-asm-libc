@@ -1,0 +1,17 @@
+#include <sysdep.h>
+
+#ifndef ANOMALY_05000202
+# ifdef __WORKAROUND_SPECULATIVE_LOADS
+#  define ANOMALY_05000202 1
+# else
+#  define ANOMALY_05000202 0
+# endif
+#endif
+
+#ifndef ANOMALY_05000245
+# ifdef __WORKAROUND_SPECULATIVE_LOADS
+#  define ANOMALY_05000245 1
+# else
+#  define ANOMALY_05000245 0
+# endif
+#endif

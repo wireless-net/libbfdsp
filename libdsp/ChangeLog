@@ -1,0 +1,247 @@
+2008-08-20  Jie Zhang  <jie.zhang@analog.com>
+
+	* Makefile (%.o: %.asm): Strip the result object file.
+	(%rad4_fr16.o: %_fr16.asm): Likewise.
+	(%.o: %.S): Likewise.
+
+2008-08-20  Jie Zhang  <jie.zhang@analog.com>
+
+	* dfr2fl.asm: New file.
+	* fl2dfr.asm: New file.
+	* fl2fr.asm: New file.
+	* fr2fl.asm: New file.
+	* Makefile (LIBBFDSP_ASRCS): Add dfr2fl.asm, fl2dfr.asm,
+	fl2fr.asm, and fr2fl.asm.
+
+2008-06-16  Bernd Schmidt  <bernd.schmidt@analog.com>
+
+	* cadd16.c: Include <fract_complex.h>, not <complex_fns.h>.
+	* csub16.c: Likewise.
+	* cmlt16.c: Likewise.
+	* conj16.c: Likewise.
+	* polar16.c: Likewise.
+	* arg16.c: Likewise; also include <fract.h> instead of <math.h>.
+	* cvecsaddf.c: Don't include <complex_fns.h>.
+	* cvecvaddf.c: Likewise.
+	* cvecsaddd.c: Likewise.
+	* cvecvaddd.c: Likewise.
+	* cvecssubf.c: Likewise.
+	* cvecvsubf.c: Likewise.
+	* cvecssubd.c: Likewise.
+	* cvecvsubd.c: Likewise.
+	* cvecsmltd.c: Likewise.
+	* cvecvmltd.c: Likewise.
+	* cvecsmlt.c: Likewise.
+	* cvecvmltf.c: Likewise.
+	* cvecdotf.c: Likewise.
+	* cvecdotd.c: Likewise.
+	* exp.c: Likewise.
+	* cmatmmltd.c: Likewise.
+
+	* cdivd.c: Include <complex_bf.h>, not <complex_fns.h>.
+	* cdiv.c: Likewise.
+	* cmltd.c: Likewise.
+	* caddd.c: Likewise.
+	* csubd.c: Likewise.
+	* polard.c: Likewise.
+	* polar.c: Likewise.  Don't include <math.h>.
+
+	* norm.c: Don't include <math.h>.  Include <complex_bf.h>, not
+	<complex_fns.h>.
+	(_normf): Use bf_cabsf.
+	* normd.c: Don't include <math.h>.  Include <complex_bf.h>, not
+	<complex_fns.h>.
+	(bf_normd): Use bf_cabsd.
+	* cartesian.c (_cartesianf): Include <complex_bf.h>, not
+	<complex_fns.h>.  Use bf_cabsf.
+	* cartesiand.c (cartesiand): Include <complex_bf.h>, not
+	<complex_fns.h>.  Use bf_cabsf.
+	* cabsd.c (bf_cabsd): Renamed from cabsd.
+	* cexpd.c (bf_cexpd): Renamed from cexpd.
+	* argd.c (bf_argd): Renamed from argd.
+	* conjd.c (bf_conjd): Renamed from conjd.
+
+	* clipll.c: Include <stdlib.h>, not <math.h>, and define
+	_ISOC99_SOURCE.
+
+	* Makefile (CFLAGS): Don't use -fno-builtin.
+
+	* Makefile (FFT_RAD4_OBJS): New.
+	(LIBBFDSP_OBJS): Include it.
+	(%rad4_fr16.o): New rule to build alternate output files by defining
+	__RADIX_4_FFT.
+
+2008-06-13  Bernd Schmidt  <bernd.schmidt@analog.com>
+
+	* div16.asm (____div16): New symbol, hidden version of _div16.
+	* lshifti64.asm (____lshiftli): New symbol, hidden version of
+	___lshiftli.
+	* sdiv32.asm (____div32): New symbol, hidden version of ___div32.
+	* udiv32.asm (____udiv32): New symbol, hidden version of ___udiv32.
+	* muli64.asm (____mulli3): New symbol, hidden version of ___mulli3.
+	* mulu64.asm (____mullu3): New symbol, hidden version of ___mullu3.
+	* divfract32.asm (____divfract32): New symbol, hidden version of
+	__divfract32.
+	* sdiv64.asm (____divdi3): New symbol, hidden version of ___divdi3.
+	Use hidden symbol in call.
+	* udiv64.asm (____udivdi3): New symbol, hidden version of ___udivdi3.
+	Use hidden symbol in call.
+	
+	* urem32.asm (___urem32): Use hidden symbol in call.
+	* srem32.asm (___rem32): Likewise.
+	* remi64.asm (___moddi3): Likewise.
+	* remu64.asm (___umoddi3): Likewise.
+	* autocorr_fr16.asm (__autocorr_fr16): Likewise.
+	* crosscorr_fr16.asm (__crosscorr_fr16): Likewise.
+	* crosscoh_fr16.asm (__crosscoh_fr16): Likewise.
+	* autocoh_fr16.asm (__autocoh_fr16): Likewise.
+	* histogram_fr16.asm (__autocoh_fr16): Likewise.
+	* var_fr16.asm (__var_fr16): Likewise.
+	* cdiv_fr16.asm (__cdiv_fr16): Likewise.
+	* rms_fr16.asm (__rms_fr16): Likewise.
+
+	* tan_fr16.asm (__tan_fr16): When compiling for FD-PIC, use GOT when
+	loading address of a symbol.
+	* asin_fr16.asm (__asin_fr16): Likewise.
+	* sin_fr16.asm (__sin_fr16): Likewise.
+	* acos_fr16.asm (__acos_fr16): Likewise.
+	* cos_fr16.asm (__cos_fr16): Likewise.
+	* mu_compress16.asm (__mu_compress): Likewise.
+	* atan_fr16.asm (__atan_fr16): Likewise.
+	* atan2_fr16.asm (__atan2_fr16): Likewise.  Push and restore P5 and use
+	it to save GOT pointer.  Use hidden symbol in call.
+	
+2008-05-21  Jie Zhang  <jie.zhang@analog.com>
+
+	* testsuite/cfft/cfft.c: Include complex.h instead of
+	complex_fns.h.
+
+2008-05-21  Jie Zhang  <jie.zhang@analog.com>
+
+	* twidfftf_fr16.c: Include math_bf.h instead of math.h.
+	* twidfftrad2_fr16.c: Likewise.
+	* polar16.c: Likewise.
+	* Lib_cos16_2PIx.c: Likewise.
+	* twidfft2d_fr16.c: Likewise.
+	* twidfftrad4_fr16.c: Likewise.
+	* twiddle_fr16.c: Likewise.
+	* libdsp/testsuite/ifft.c: New test case.
+	* libdsp/testsuite/Makefile: Add ifft.c.
+
+2008-04-17  Bernd Schmidt  <bernd.schmidt@analog.com>
+
+	* cadd16.c: Replaced complex.h with complex_fns.h.
+	* cvecdotd.c: Likewise.
+	* cmlt16.c: Likewise.
+	* cvecvaddf.c: Likewise.
+	* norm.c: Likewise.
+	* cabsd.c: Likewise.
+	* sqrtf.asm: Likewise.
+	* cartesian.c: Likewise.
+	* polar16.c: Likewise.
+	* arg.c: Likewise.
+	* cvecssubd.c: Likewise.
+	* cvecdotf.c: Likewise.
+	* sind.c: Likewise.
+	* polar.c: Likewise.
+	* cvecdot_fr16.asm: Likewise.
+	* cdiv.c: Likewise.
+	* sin_fr16.asm: Likewise.
+	* lib_sqrt_seeds.asm: Likewise.
+	* csubd.c: Likewise.
+	* cexpd.c: Likewise.
+	* cvecvsubd.c: Likewise.
+	* cdivd.c: Likewise.
+	* atan2_fr16.asm: Likewise.
+	* cabfr16.asm: Likewise.
+	* sqrt_fr16.asm: Likewise.
+	* div16.asm: Likewise.
+	* cartesiand.c: Likewise.
+	* cvecssubf.c: Likewise.
+	* cvecsmltd.c: Likewise.
+	* exp.c: Likewise.
+	* testsuite/cfft/cfft.c: Likewise.
+	* argd.c: Likewise.
+	* normd.c: Likewise.
+	* cartesian16.c: Likewise.
+	* cmltd.c: Likewise.
+	* csub16.c: Likewise.
+	* arg16.c: Likewise.
+	* cmatmmltd.c: Likewise.
+	* cvecvsubf.c: Likewise.
+	* cvecvmltd.c: Likewise.
+	* cexp.c: Likewise.
+	* cvecsaddd.c: Likewise.
+	* cos.c: Likewise.
+	* cosd.c: Likewise.
+	* cvecsmlt.c: Likewise.
+	* caddd.c: Likewise.
+	* atan2.c: Likewise.
+	* cvecvaddd.c: Likewise.
+	* conjd.c: Likewise.
+	* cabs.c: Likewise.
+	* atan2d.c: Likewise.
+	* cos_fr16.asm: Likewise.
+	* polard.c: Likewise.
+	* cvecvmltf.c: Likewise.
+	* conj16.c: Likewise.
+	* cdiv_fr16.asm: Likewise.
+	* cvecsaddf.c: Likewise.
+	* sin.c: Likewise.
+
+2008-01-07  Jie Zhang  <jie.zhang@analog.com>
+
+	* u32tof64.asm: Remove useless .end symbol.
+	* u64tof64.asm: Likewise.
+	* f64toi32z.asm: Likewise.
+	* fltuif.asm: Likewise.
+	* f64tou64z.asm: Likewise.
+	* f64tof32.asm: Likewise.
+	* floatdiuf.asm: Likewise.
+	* f64toi32.asm: Likewise.
+	* fltsif.asm: Likewise.
+	* fpdiv.asm: Likewise.
+	* f32tof64.asm: Likewise.
+	* floatdisf.asm: Likewise.
+	* i32tof64.asm: Likewise.
+	* i64tof64.asm: Likewise.
+	* f64toi64.asm: Likewise.
+	* f64toi64z.asm: Likewise.
+
+2007-08-20  Jie Zhang  <jie.zhang@analog.com>
+
+	* Makefile (ARFLAGS): New.
+	(libbfdsp.a): Make it from object files.
+	(libbffastfp.a): Likewise.
+	((%.o): %.asm): Remove.
+	(%.o: %.asm): New rule.
+	((%.o): %.S): Remove.
+	(%.o: %.S): New rule.
+	((%.o): %.c): Remove.
+	(%.o: %.c): New rule.
+
+2007-08-02  Jie Zhang  <jie.zhang@analog.com>
+
+	* Makefile (LIBBFDSP_ASRCS): Add fract28_4mul.asm and
+	fract24_8mul.asm.
+	* fract28_4mul.asm: New.
+	* fract24_8mul.asm: New.
+
+2007-08-01  Jie Zhang  <jie.zhang@analog.com>
+
+	* countll.c: Processed with c_fix_builtins.sed.
+
+2007-07-24  Jie Zhang  <jie.zhang@analog.com>
+
+	* Makefile: Only build and archive complex fuctions when
+	libc doesn't have them.
+	Fix the rules for updating archive members.
+
+2007-07-23  Jie Zhang  <jie.zhang@analog.com>
+
+	* fir_decima16.asm: Remove trailing ; of #endif.
+	* polar16.c (_polar_fr16): The least short is 0xffff8000
+	instead of 0x8000.
+	* sqrt_fr16.asm: Don't use HI and LO.
+	* rms_fr16.asm: Replace BITPOS(BIT0_MASK) with 0.
+

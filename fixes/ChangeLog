@@ -1,0 +1,14 @@
+2007-08-02  Jie Zhang  <jie.zhang@analog.com>
+
+	* fix.sh: Exclude .svn directory and only fix
+	.h, .c, .asm, and .S files.
+	* c_fix_pragmas.sed: Fix #pragma inline.
+
+2007-08-02  Jie Zhang  <jie.zhang@analog.com>
+
+	* c_fix_builtins.sed: Add copyright.
+
+2007-08-01  Jie Zhang  <jie.zhang@analog.com>
+
+	* c_fix_builtins.sed: New.
+	* fix.sh: Add c_fix_builtins.sed.

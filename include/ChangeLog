@@ -1,0 +1,181 @@
+2008-06-16  Bernd Schmidt  <bernd.schmidt@analog.com>
+
+	* complex_fns.h (bf_cabsf, bf_cabsd, bf_cabs, bf_conjf, bf_conjd,
+	bf_conj, bf_cexpf, bf_cexpd, bf_cexp, bf_argf, bf_argd, bf_arg):
+	Renamed from functions without "bf_" prefix, so as to remove them
+	from the libm namespace.
+	* fract_math.h (round): Remove function.
+	* fract_complex.h (__builtin_bfin_real_fr32, __builtin_bf_imag_fr32,
+	__builtin_bfin_cadd_fr32, __builtin_bfin_csub_fr32,
+	__builtin_bfin_conj_fr32, __builtin_bfin_csqu_fr16,
+	__builtin_bfin_compose_i64): Remove declarations of builtin functions.
+
+2008-06-13  Bernd Schmidt  <bernd.schmidt@analog.com>
+
+	* complex_typedef.h (complex_fract16): Align to 4 bytes.
+
+2008-04-17  Bernd Schmidt  <bernd.schmidt@analog.com>
+
+	* complex_fns.h: Renamed from complex.h.
+
+2007-08-16  Jie Zhang  <jie.zhang@analog.com>
+
+	* math_bf.h (alogf): Don't declare.
+	(alogd): Likewise.
+	(alog): Likewise.
+	(alog10f): Likewise.
+	(alog10d): Likewise.
+	(alog10): Likewise.
+	* i2x16_math.h: Inlude math_bf.h instead of math.h.
+	* vector.h: Include complex_bf.h instead of complex.h
+	* matrix.h: Likewise.
+	* filter.h: Likewise.
+
+2007-08-08  Jie Zhang  <jie.zhang@analog.com>
+
+	* math_bf.h (fmaxf): Remove.
+	(fmax): Remove.
+	(fmaxd): Remove.
+	(fminf): Remove.
+	(fmin): Remove.
+	(fmind): Remove.
+
+2007-08-06  Jie Zhang  <jie.zhang@analog.com>
+
+	* math_bf.h (isinff): Remove.
+	(isinf): Remove.
+	(isinfd): Remove.
+	(isnanf): Remove.
+	(isnan): Remove.
+	(isnand): Remove.
+
+2007-08-03  Jie Zhang  <jie.zhang@analog.com>
+
+	* cycle_count_bf.h (_GET_CYCLE_COUNT): Use constraints "R1"
+	and "R2" instead of "r1" and "r2" respectively.
+	(_STOP_CYCLE_COUNT): Likewise.
+
+2007-08-03  Jie Zhang  <jie.zhang@analog.com>
+
+	* cycle_count_bf.h (_GET_CYCLE_COUNT): Use constraint "a"
+	instead of "p" for P register.
+	(_STOP_CYCLE_COUNT): Likewise.
+
+2007-08-03  Jie Zhang  <jie.zhang@analog.com>
+
+	* xcycle_count.h: Processed with fix sed scripts.
+	* cycle_count.h: Likewise.
+	* cycle_count_bf.h: Likewise.
+
+2007-08-02  Jie Zhang  <jie.zhang@analog.com>
+
+	* matrix.h (MatrixMultVec3x1Frac28_4): Declare.
+	(MatrixMultVec3x1Frac24_8): Declare.
+	(MatrixMultVec4x1Frac24_8): Declare.
+	* fract_math.h (fract24_8mul_asm): Declare.
+	(fract28_4mul_asm): Declare.
+
+2007-08-02  Jie Zhang  <jie.zhang@analog.com>
+
+	* math_bf.h: Processed with c_fix_pragmas.sed.
+	* i2x16_base.h: Likewise.
+	* complex.h: Likewise.
+	* float16.h: Likewise.
+	* i2x16_math.h: Likewise.
+	* fr2x16_base.h: Likewise.
+	* fract2float_conv.h: Likewise.
+	* flt2fr.h: Likewise.
+	* fr2x16_math.h: Likewise.
+	* matrix.h: Likewise.
+	* fract_math.h: Likewise.
+	* r2x16_base.h: Likewise.
+	* complex_bf.h: Likewise.
+	* fract_complex.h: Likewise.
+
+2007-08-02  Jie Zhang  <jie.zhang@analog.com>
+
+	* math_bf.h (_C_STD_BEGIN): Don't use.
+	(_C_LIB_DECL): Don't use.
+	(_END_C_LIB_DECL): Don't use.
+	(_C_STD_END): Don't use.
+
+2007-08-02  Jie Zhang  <jie.zhang@analog.com>
+
+	* yvals.h: Remove.
+	* math_bf.h: Don't include yvals.h.
+
+2007-08-02  Jie Zhang  <jie.zhang@analog.com>
+
+	* math_bf.h: Don't include ccblkfn.h.
+	Include gcc.h instead.
+	(__builtin_bfin_max): Don't declare.
+	(__builtin_bfin_lmax): Likewise.
+	(__builtin_bfin_min): Likewise.
+	(__builtin_bfin_lmin): Likewise.
+	* r2x16_typedef.h (raw2x16): Typedef as __v2hi if
+	__NO_BUILTIN is not defined.
+	* raw_typedef.h (__v2hi): Typedef if __NO_BUILTIN is not
+	defined.
+	* gcc.h: New.
+	* ccblkfn.h: Remove.
+	* fract_math.h: Don't include ccblkfn.h.
+	Include gcc.h instead.
+	(shl_fr2x16): Don't cast the second argument when calls
+	corresponding builtin function.
+	(shl_fr2x16_clip): Likewise.
+	(shl_fr1x16): Likewise.
+	(shl_fr1x16_clip): Likewise.
+	(shr_fr2x16): Likewise.
+	(shr_fr2x16_clip): Likewise.
+	(shr_fr1x16): Likewise.
+	(shr_fr1x16_clip): Likewise.
+	(shrl_fr2x16): Likewise.
+	(shrl_fr2x16_clip): Likewise.
+	(shl_fr1x32): Likewise.
+	(shl_fr1x32_clip): Likewise.
+	(shr_fr1x32): Likewise.
+	(shr_fr1x32_clip): Likewise.
+	(negate_fr1x16): Call fr1x16 builtin instead of fr2x16 one.
+	(shrl_fr1x16): Likewise.
+	(shrl_fr1x16_clip): Likewise.
+	(abs_fr16): Likewise.
+	(abs_fr1x16): Likewise.
+	(max_fr16): Likewise.
+	(min_fr16): Likewise.
+	(max_fr1x16): Likewise.
+	(min_fr1x16): Likewise.
+	* complex_bf.h (cexpf): Remove declaration.
+	(cexpd): Likewise.
+	(cexp): Likewise.
+	(argf): Likewise.
+	(argd): Likewise.
+	(arg): Likewise.
+	* fract_complex.h: Include fr2x16_math.h.
+	(cadd_fr16): Use fract2x16 as the result type of builtin
+	function.
+	(csub_fr16): Likewise.
+	(cmlt_fr16): Likewise.
+	(cmac_fr16): Likewise.
+
+2007-08-01  Jie Zhang  <jie.zhang@analog.com>
+
+	* math_bf.h: Processed with c_fix_builtins.sed.
+	* ccblkfn.h: Likewise.
+	* i2x16_base.h: Likewise.
+	* fr2x16_base.h: Likewise.
+	* fr2x16_math.h: Likewise.
+	* video.h: Likewise.
+	* fract_math.h: Likewise.
+	* r2x16_base.h: Likewise.
+	* fract_complex.h: Likewise.
+
+2007-07-24  Jie Zhang  <jie.zhang@analog.com>
+
+	* complex.h: Split Blackfin extension and fraction complex
+	functions into ...
+	* complex_bf.h: this.
+	* fract_complex.h: and this.
+
+2007-07-23  Jie Zhang  <jie.zhang@analog.com>
+
+	* yvals.h: Don't check __EDG_VERSION__.

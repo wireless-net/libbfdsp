@@ -1,0 +1,35 @@
+2008-08-20  Jie Zhang  <jie.zhang@analog.com>
+
+	* Makefile (STRIP): Set.
+	(FLAGS_TO_PASS): Add STRIP.
+
+2008-05-21  Jie Zhang  <jie.zhang@analog.com>
+
+	Revert
+	2008-05-21  Jie Zhang  <jie.zhang@analog.com>
+	* Makefile (headers): Add compplex_fns.h.
+
+2008-05-21  Jie Zhang  <jie.zhang@analog.com>
+
+	* Makefile (headers): Add compplex_fns.h.
+
+2008-04-18  Jie Zhang  <jie.zhang@analog.com>
+
+	* Makefile: Don't hard code compiler as bfin-elf-gcc.
+
+2007-08-03  Jie Zhang  <jie.zhang@analog.com>
+
+	* Makefile (headers): Add cycle_count.h, cycle_count_bf.h,
+	and xcycle_count.h
+
+2007-08-02  Jie Zhang  <jie.zhang@analog.com>
+
+	* Makefile (headers): Remove yvals.h.
+
+2007-08-02  Jie Zhang  <jie.zhang@analog.com>
+
+	* Makefile (headers): Remove ccblkfn.h. Add gcc.h.
+
+2007-07-24  Jie Zhang  <jie.zhang@analog.com>
+
+	* Makefile: Only install complex.h when libc doesn't have it.

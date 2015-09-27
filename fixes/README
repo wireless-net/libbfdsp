@@ -1,0 +1,7 @@
+This directory contains the sed scripts which are used to fix various
+aspects of VDSP source code when being ported to GCC land.
+
+fix.sh is the driver shell script. It accepts one argument, which could be
+a file name or directory name. fix.sh applies all sed script one by one on
+file (if the argument is a file) or each file in the directory (if the
+argument is a directory).
